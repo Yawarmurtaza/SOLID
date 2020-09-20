@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LSP\Complaint\BaseCar.cs" />
     <Compile Include="LSP\NonComplaint\Car.cs" />
+    <Compile Include="LSP\CarClient.cs" />
+    <Compile Include="LSP\NonComplaint\VideoPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

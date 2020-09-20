@@ -1,15 +1,12 @@
-﻿namespace SolidWorkshop.LSP.NonComplaint
+﻿namespace SolidWorkshop.LSP.Complaint
 {
     using System;
-    using System.CodeDom;
 
-    public class Car
+    public abstract class BaseCar
     {
-        private int currentGearLevel;
-        private bool engineRunning;
+        protected bool engineRunning;
         private int currentSpeed;
         private CarState state;
-
 
         public virtual void StartEngine()
         {
@@ -61,7 +58,7 @@
             Console.WriteLine($"Car type = {GetType().Name}, State = Reverse");
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             state = CarState.Stopped;
             Console.WriteLine($"Car type = {GetType().Name}, State = Stopped");
@@ -71,6 +68,12 @@
         {
             get { return state; }
         }
+    }
+
+    public class ManualCar : BaseCar
+    {
+        private int currentGearLevel;
+
 
         public virtual void ShiftUp()
         {
@@ -95,13 +98,13 @@
         }
     }
 
-    public class ElectricCar : Car
+    public class ElectricCar : BaseCar
     {
         private int batteryLife;
 
-        public ElectricCar()
+        public int BatteryLife
         {
-            batteryLife = 10;
+            get { return batteryLife; }
         }
 
         public override void StartEngine()
@@ -110,26 +113,6 @@
             {
                 base.StartEngine();
             }
-        }
-
-        public override void ShiftDown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ShiftUp()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int GearLevel
-        {
-            get { throw new NotImplementedException(); }
-        }
-        
-        public int BatteryLife
-        {
-            get { return batteryLife; }
         }
 
         public void ChargeBattery()
@@ -149,6 +132,7 @@
             base.Reverse();
         }
     }
+
 
     public enum CarState
     {
