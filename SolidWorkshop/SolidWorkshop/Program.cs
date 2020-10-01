@@ -13,8 +13,20 @@ namespace SolidWorkshop
     {
         static void Main(string[] args)
         {
-            CarClient client = new CarClient();
-            client.Run();
+            IList<int> nullList = null;
+            Test(nullList);
+            
+
+
+            //CarClient client = new CarClient();
+            //client.Run();
+        }
+
+        public static void Test(IList<int> list)
+        {
+            foreach (var i in list ?? Enumerable.Empty<int>())
+            {
+            }
         }
     }
 }

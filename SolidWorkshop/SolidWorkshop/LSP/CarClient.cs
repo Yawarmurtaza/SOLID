@@ -15,26 +15,15 @@
 
         private void TestDrive(Car car)
         {
-
-            // start the car
-            car.StartEngine();
-
             // drive
             car.Drive();
 
-            // speed up
-            car.Speed = 20;
             car.ShiftUp();
 
-            // stop
-            car.Stop();
-
+            car.ShiftDown();
+            
             // reverse
             car.Reverse();
-            car.Speed = 5;
-            
-            // stop
-            car.Stop();
         }
     }
 }
